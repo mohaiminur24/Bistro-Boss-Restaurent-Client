@@ -7,6 +7,7 @@ import BistroBossSection from "./BistroBossSection";
 import OurMenuSection from "./OurMenuSection";
 import OurRecommendSection from "./OurRecommendSection";
 import Featuressection from "./Featuressection";
+import TestimionialsSection from "./TestimionialsSection";
 
 const HomePage = () => {
   return (
@@ -29,6 +30,10 @@ const HomePage = () => {
         <OurRecommendSection/>
       </div>
       <Featuressection/>
+      <div className="w-4/5 mx-auto">
+        <TestimionialsSection/>
+
+      </div>
     </div>
   );
 };
