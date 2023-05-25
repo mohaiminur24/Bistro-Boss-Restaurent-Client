@@ -8,6 +8,7 @@ import OurMenuSection from "./OurMenuSection";
 import OurRecommendSection from "./OurRecommendSection";
 import Featuressection from "./Featuressection";
 import TestimionialsSection from "./TestimionialsSection";
+import Footer from "../../ShareAbleComponents/Footer";
 
 const HomePage = () => {
   return (
@@ -32,8 +33,8 @@ const HomePage = () => {
       <Featuressection/>
       <div className="w-4/5 mx-auto">
         <TestimionialsSection/>
-
       </div>
+      <Footer/>
     </div>
   );
 };
