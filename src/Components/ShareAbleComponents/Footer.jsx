@@ -3,8 +3,8 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-neutral text-neutral-content">
-        <div className="mx-auto font-Inter">
+      <footer className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-center items-center bg-neutral text-white">
+        <div className="bg-slate-700 font-Inter p-10 text-center">
           <h1 className="text-2xl uppercase">Contact us</h1>
           <div className="text-xs font-Cinzel">
             <p>123 ABS Street, Uni 21, Bangladesh</p>
@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <div>
           <span className="footer-title">Social</span>
-          <div className="grid grid-flow-col gap-4">
+          <div className="flex gap-3 items-center mt-2">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="py-1 text-xs font-bold text-white bg-neutral">
+      <div className="py-3 text-xs font-bold text-white bg-slate-900">
         <h1 className="text-center tracking-widest font-Raleway">All right reserved @2023 : MohaiMinur rahman Mukta</h1>
       </div>
     </div>
