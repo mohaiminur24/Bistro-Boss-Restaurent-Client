@@ -4,6 +4,7 @@ import Slider from "../../ShareAbleComponents/Slider";
 import SectionTitle from "../../ShareAbleComponents/SectionTitle";
 import SubSlider from "./SubSlider";
 import BistroBossSection from "./BistroBossSection";
+import OurMenuSection from "./OurMenuSection";
 
 const HomePage = () => {
   return (
@@ -16,7 +17,11 @@ const HomePage = () => {
           subheading="From 11:00am to 10:00pm"
         />
         <SubSlider />
-        <BistroBossSection/>
+        <BistroBossSection />
+        <SectionTitle heading="From Our Menu" subheading=" Check it out" />
+        <OurMenuSection/>
+
+        
       </div>
     </div>
   );
