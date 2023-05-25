@@ -5,6 +5,7 @@ import SectionTitle from "../../ShareAbleComponents/SectionTitle";
 import SubSlider from "./SubSlider";
 import BistroBossSection from "./BistroBossSection";
 import OurMenuSection from "./OurMenuSection";
+import OurRecommendSection from "./OurRecommendSection";
 
 const HomePage = () => {
   return (
@@ -20,8 +21,13 @@ const HomePage = () => {
         <BistroBossSection />
         <SectionTitle heading="From Our Menu" subheading=" Check it out" />
         <OurMenuSection/>
+        <div className="my-20 bg-black w-full h-52 flex justify-center items-center text-white font-Raleway">
+            <h1 className="text-4xl font-semibold">Contact us: 017572458**</h1>
+        </div>
+        <SectionTitle heading="Chef recommends" subheading="Should Try"/>
+        <OurRecommendSection/>
 
-        
+
       </div>
     </div>
   );
