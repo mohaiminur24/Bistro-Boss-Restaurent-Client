@@ -3,6 +3,7 @@ import Navbar from "../../ShareAbleComponents/Navbar";
 import Slider from "../../ShareAbleComponents/Slider";
 import SectionTitle from "../../ShareAbleComponents/SectionTitle";
 import SubSlider from "./SubSlider";
+import BistroBossSection from "./BistroBossSection";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
           subheading="From 11:00am to 10:00pm"
         />
         <SubSlider />
+        <BistroBossSection/>
       </div>
     </div>
   );
