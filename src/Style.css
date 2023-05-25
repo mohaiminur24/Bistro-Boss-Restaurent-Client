@@ -1,0 +1,21 @@
+.carousel .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.carousel .slide img {
+    max-height: 500px;  /* change this to whatever you want */
+    width: 100%;
+};
+.carousel{
+    text-align: center !important;
+    margin: 0px auto;
+    width: 100% !important;
+    right: 0;
+}
+.carousel .thumbs{
+    text-align: center;
+};
+.carousel .thumb.selected{
+    border: 1px solid black !important;
+}
