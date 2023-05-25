@@ -6,6 +6,7 @@ import SubSlider from "./SubSlider";
 import BistroBossSection from "./BistroBossSection";
 import OurMenuSection from "./OurMenuSection";
 import OurRecommendSection from "./OurRecommendSection";
+import Featuressection from "./Featuressection";
 
 const HomePage = () => {
   return (
@@ -26,9 +27,8 @@ const HomePage = () => {
         </div>
         <SectionTitle heading="Chef recommends" subheading="Should Try"/>
         <OurRecommendSection/>
-
-
       </div>
+      <Featuressection/>
     </div>
   );
 };

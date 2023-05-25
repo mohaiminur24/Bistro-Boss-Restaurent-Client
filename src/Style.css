@@ -19,3 +19,11 @@
 .carousel .thumb.selected{
     border: 1px solid black !important;
 }
+
+.feautre-home-page{
+    background-image: url("https://i.postimg.cc/VNrcXXvp/featured.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(88, 87, 87);
+    background-blend-mode: multiply;
+}
