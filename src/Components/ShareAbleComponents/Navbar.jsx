@@ -1,43 +1,63 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
-
+import { AuthContext } from "../AuthContextLayout/AuthContextLayout";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
+
   const menubar = (
     <>
       <li>
-        <NavLink to="/" className={({isActive})=> isActive && "text-yellow-500"}>
+        <NavLink
+          to="/"
+          className={({ isActive }) => isActive && "text-yellow-500"}
+        >
           <button>Home</button>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/contact" className={({isActive})=> isActive && "text-yellow-500"}>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) => isActive && "text-yellow-500"}
+        >
           <button>Contact us</button>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard" className={({isActive})=> isActive && "text-yellow-500"}>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) => isActive && "text-yellow-500"}
+        >
           <button>Dashboard</button>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/ourmenu" className={({isActive})=> isActive && "text-yellow-500"}>
+        <NavLink
+          to="/ourmenu"
+          className={({ isActive }) => isActive && "text-yellow-500"}
+        >
           <button>Our Menu</button>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/ourshop" className={({isActive})=> isActive && "text-yellow-500"}>
-          <button className="flex gap-2 items-center">Our Shop <BsFillCartCheckFill className="text-2xl text-green-900"/></button>
+        <NavLink
+          to="/ourshop"
+          className={({ isActive }) => isActive && "text-yellow-500"}
+        >
+          <button className="flex gap-2 items-center">
+            Our Shop <BsFillCartCheckFill className="text-2xl text-green-900" />
+          </button>
         </NavLink>
       </li>
       <li>
-        <NavLink to="/signout" className={({isActive})=> isActive && "text-yellow-500"}>
-          <button className="flex items-center gap-2">Sign Out
-            <CgProfile className="text-2xl"/>
+        {user ? (
+          <button className="flex items-center gap-2">
+            Sign Out
+            <CgProfile className="text-2xl" />
           </button>
-        </NavLink>
+        ) :  <NavLink to="/login">Login</NavLink> } 
       </li>
     </>
   );
