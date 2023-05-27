@@ -4,6 +4,7 @@ import HomePage from "../PageLayout/HomePage/HomePage";
 import OurMenuPage from "../PageLayout/OurMenuPage/OurMenuPage";
 import OurShop from "../PageLayout/OurShopPage/OurShop";
 import Contactus from "../PageLayout/ContactPage/Contactus";
+import LoginPage from "../PageLayout/LoginPage/LoginPage";
 
 const route = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const route = createBrowserRouter([
                 element: <Contactus/>
             }
         ]
+    },
+    {
+        path: "/login",
+        element: <LoginPage/>
     }
 ]);
 
