@@ -5,6 +5,7 @@ import OurMenuPage from "../PageLayout/OurMenuPage/OurMenuPage";
 import OurShop from "../PageLayout/OurShopPage/OurShop";
 import Contactus from "../PageLayout/ContactPage/Contactus";
 import LoginPage from "../PageLayout/LoginPage/LoginPage";
+import Registration from "../PageLayout/RegistrationPage/Registration";
 
 const route = createBrowserRouter([
     {
@@ -32,6 +33,10 @@ const route = createBrowserRouter([
     {
         path: "/login",
         element: <LoginPage/>
+    },
+    {
+        path:"/registration",
+        element: <Registration/>
     }
 ]);
 
