@@ -6,10 +6,18 @@ import Footer from "../../ShareAbleComponents/Footer";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../../../Style.css";
-import FindMenuByCatagory from "../../CustomHooklayout/CustomHook";
 import ShopMenudetails from "../../ShareAbleComponents/ShopMenudetails";
+import FindMenuByCatagory from "../../CustomHooklayout/CustomHook";
+import { useParams } from "react-router-dom";
 
 const OurShop = () => {
+  const categorys = ["salad","pizza","soup","dessert","drinks"];
+  const {category} = useParams();
+  let initialindex = categorys.indexOf(category);
+  if(initialindex < 0){
+    initialindex = 0;
+  };
+
   const [salad] = FindMenuByCatagory("salad");
   const [pizza] = FindMenuByCatagory("pizza");
   const [soups] = FindMenuByCatagory("soup");
@@ -27,7 +35,7 @@ const OurShop = () => {
         subheading="would you like to try dish"
       />
       <div className="w-4/5 mx-auto my-20 font-Inter">
-        <Tabs>
+        <Tabs defaultIndex={initialindex}>
           <TabList className="text-center mb-10 text-sm font-normal uppercase">
             <Tab>Salad</Tab>
             <Tab>Pizza</Tab>

@@ -4,6 +4,7 @@ import LoginWithSocial from "../../ShareAbleComponents/LoginWithSocial";
 import { AuthContext } from "../../AuthContextLayout/AuthContextLayout";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -13,6 +14,10 @@ const Registration = () => {
   const createuser = (data) =>{
     handlecreateuser(data.email, data.password)
     .then(res=>{
+      updateProfile(res.user,{
+        displayName: data.name,
+        photoURL: data.photourl
+      });
       Swal.fire({
         position: 'top',
         icon: 'success',

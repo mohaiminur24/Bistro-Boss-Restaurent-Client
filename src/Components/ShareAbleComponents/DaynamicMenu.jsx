@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import FindMenuByCatagory from '../CustomHooklayout/CustomHook';
+import { NavLink } from 'react-router-dom';
 
 const DaynamicMenu = ({catagory}) => {
     const [menu] = FindMenuByCatagory(catagory);
@@ -23,7 +24,7 @@ const DaynamicMenu = ({catagory}) => {
           ))}
       </div>
       <div className="text-center">
-        <button className="rounded-md py-2 px-4 border-b-2 text-sm hover:bg-black hover:text-white">View Full Menu</button>
+        <NavLink to={`/ourshop/${catagory}`}><button className="rounded-md py-2 px-4 border-b-2 text-sm hover:bg-black hover:text-white">Order your Favourite Food</button></NavLink>
       </div>
     </div>
     );

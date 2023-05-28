@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const OurMenuSection = () => {
   const [menu, setMenu] = useState(null);
@@ -30,7 +31,7 @@ const OurMenuSection = () => {
           ))}
       </div>
       <div className="text-center">
-        <button className="rounded-md py-2 px-4 border-b-2 text-sm hover:bg-black hover:text-white">View Full Menu</button>
+        <NavLink to="/ourmenu"><button className="rounded-md py-2 px-4 border-b-2 text-sm hover:bg-black hover:text-white">View Full Menu</button></NavLink>
       </div>
     </div>
   );

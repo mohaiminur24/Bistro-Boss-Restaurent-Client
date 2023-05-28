@@ -9,6 +9,8 @@ const FindMenuByCatagory = (catagory)=>{
             });
         },[])
 
+        console.log(menu);
+
         return [menu];
 };
 

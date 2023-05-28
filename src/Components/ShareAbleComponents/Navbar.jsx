@@ -60,7 +60,7 @@ const Navbar = () => {
             toast.success('Successfully toasted!')
           }} className="flex items-center gap-2">
             Sign Out
-            <CgProfile className="text-2xl" />
+            <img className="w-8 border p-1 h-8 rounded-full" title={user?.displayName} src={user?.photoURL} />
           </button>
         ) :  <NavLink to="/login">Login</NavLink> } 
       </li>
