@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../FirebaseConfigPage/FirebaseConfig';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -9,13 +9,28 @@ const AuthContextLayout = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // create new user function is here
+    const handlecreateuser = (email, pass)=>{
+        return createUserWithEmailAndPassword(auth, email, pass);
+    };
 
+    // logout user function is here
+    const loggedoutuser = () =>{
+        return signOut(auth);
+    };
+    // Login user function is here
+    const handleloginuser =(email, pass)=>{
+        return signInWithEmailAndPassword(auth, email, pass);
+    };
 
 
 
     const AuthValue ={
         user,
-        loading
+        loading,
+        handlecreateuser,
+        loggedoutuser,
+        handleloginuser
     };
 
     useEffect(()=>{

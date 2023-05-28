@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../AuthContextLayout/AuthContextLayout";
+import { Toaster, toast } from "react-hot-toast";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const {loggedoutuser} = useContext(AuthContext);
 
   const menubar = (
     <>
@@ -53,7 +55,10 @@ const Navbar = () => {
       </li>
       <li>
         {user ? (
-          <button className="flex items-center gap-2">
+          <button onClick={()=>{
+            loggedoutuser();
+            toast.success('Successfully toasted!')
+          }} className="flex items-center gap-2">
             Sign Out
             <CgProfile className="text-2xl" />
           </button>
@@ -64,6 +69,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full bg-black text-white bg-opacity-40 fixed top-0 z-10">
+      <div><Toaster/></div>
       <div className="navbar bg-base-100 w-11/12 mx-auto bg-transparent">
         <div className="w-full navbar-start">
           <div className="dropdown">
