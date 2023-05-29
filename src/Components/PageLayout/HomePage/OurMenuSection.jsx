@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const OurMenuSection = () => {
   const [menu, setMenu] = useState(null);
   useEffect(() => {
-    fetch("menu.json")
+    fetch("http://localhost:5000/allmenusdetails")
       .then((res) => res.json())
       .then((data) => {
         const popular = data.filter((menu) => menu.category == "popular");

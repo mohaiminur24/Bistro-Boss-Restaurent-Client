@@ -45,7 +45,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/ourshop"
+          to="/ourshop/salad"
           className={({ isActive }) => isActive && "text-yellow-500"}
         >
           <button className="flex gap-2 items-center">
