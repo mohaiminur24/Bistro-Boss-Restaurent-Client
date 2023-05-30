@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import LoginWithSocial from "../../ShareAbleComponents/LoginWithSocial";
 import {
   loadCaptchaEnginge,
@@ -17,6 +17,8 @@ const LoginPage = () => {
     const {handleloginuser} = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/';
 
     useEffect(()=>{
         loadCaptchaEnginge(6);
@@ -40,7 +42,7 @@ const LoginPage = () => {
           timer: 1500
         })
         reset();
-        navigate('/');
+        navigate(from);
       }).catch(error=>{
         Swal.fire({
           icon: 'error',
@@ -75,13 +77,13 @@ const LoginPage = () => {
               {errors.email && <span className="text-xs text-red-400">Email field is required</span>}
             </div>
             <div>
-              <label htmlFor="email">Password</label>
+              <label htmlFor="password">Password</label>
               <input
                 {...register("password", { required: true })}
                 className="text-xs mt-2 w-full text-gray-400 border block px-4 py-3 outline-none rounded-md"
-                type="text"
+                type="password"
                 name="password"
-                placeholder="Enter your Email"
+                placeholder="Password"
               />
               {errors.password && <span className="text-xs text-red-400">Password field is required</span>}
             </div>

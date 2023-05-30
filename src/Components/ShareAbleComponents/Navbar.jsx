@@ -4,10 +4,13 @@ import { BsFillCartCheckFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../AuthContextLayout/AuthContextLayout";
 import { Toaster, toast } from "react-hot-toast";
+import { cartdataload } from "../CustomHooklayout/CustomHook";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
-  const {loggedoutuser} = useContext(AuthContext);
+  const { loggedoutuser } = useContext(AuthContext);
+  const [cart] = cartdataload();
+  console.log(cart);
 
   const menubar = (
     <>
@@ -48,28 +51,48 @@ const Navbar = () => {
           to="/ourshop/salad"
           className={({ isActive }) => isActive && "text-yellow-500"}
         >
-          <button className="flex gap-2 items-center">
-            Our Shop <BsFillCartCheckFill className="text-2xl text-green-900" />
+          <button className="flex gap-2 items-center">Our Shop</button>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/ourshop/salad"
+          className={({ isActive }) => isActive && "text-yellow-500"}
+        >
+          <button className=" flex justify-center items-center px-3 py-2 rounded-md gap-2 bg-yellow-900 text-white">
+            <BsFillCartCheckFill className="text-lg"/>
+            <div className="text-xs">{cart && cart.length || 0}</div>
           </button>
         </NavLink>
       </li>
       <li>
         {user ? (
-          <button onClick={()=>{
-            loggedoutuser();
-            toast.success('Successfully toasted!')
-          }} className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              loggedoutuser();
+              toast.success("Successfully toasted!");
+            }}
+            className="flex items-center gap-2"
+          >
             Sign Out
-            <img className="w-8 border p-1 h-8 rounded-full" title={user?.displayName} src={user?.photoURL} />
+            <img
+              className="w-8 border p-1 h-8 rounded-full"
+              title={user?.displayName}
+              src={user?.photoURL}
+            />
           </button>
-        ) :  <NavLink to="/login">Login</NavLink> } 
+        ) : (
+          <NavLink to="/login">Login</NavLink>
+        )}
       </li>
     </>
   );
 
   return (
     <div className="w-full bg-black text-white bg-opacity-40 fixed top-0 z-10">
-      <div><Toaster/></div>
+      <div>
+        <Toaster />
+      </div>
       <div className="navbar bg-base-100 w-11/12 mx-auto bg-transparent">
         <div className="w-full navbar-start">
           <div className="dropdown">
