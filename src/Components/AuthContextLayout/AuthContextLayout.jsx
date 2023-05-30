@@ -11,15 +11,18 @@ const AuthContextLayout = ({children}) => {
 
     // create new user function is here
     const handlecreateuser = (email, pass)=>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, pass);
     };
 
     // logout user function is here
     const loggedoutuser = () =>{
+        setLoading(true);
         return signOut(auth);
     };
     // Login user function is here
     const handleloginuser =(email, pass)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, pass);
     };
 

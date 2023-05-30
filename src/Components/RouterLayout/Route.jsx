@@ -8,6 +8,7 @@ import LoginPage from "../PageLayout/LoginPage/LoginPage";
 import Registration from "../PageLayout/RegistrationPage/Registration";
 import DashboardPage from "../PageLayout/DashboardPage/DashboardPage";
 import MyCart from "../PageLayout/DashboardPage/Components/MyCart";
+import PrivateRoute from "../AuthContextLayout/PrivateRoute";
 
 const route = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const route = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardPage/>,
+        element: <PrivateRoute><DashboardPage/></PrivateRoute>,
         children:[
             {
                 path: "",
@@ -50,7 +51,7 @@ const route = createBrowserRouter([
             },
             {
                 path: "mycart",
-                element: <MyCart/>
+                element: <PrivateRoute><MyCart/></PrivateRoute>
             }
         ]
     }

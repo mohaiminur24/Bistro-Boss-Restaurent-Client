@@ -9,9 +9,11 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { FaBookMedical, FaCalendarAlt, FaCcApplePay, FaUsers } from "react-icons/fa";
 import { ImMenu } from "react-icons/im";
 import { TbBrandBooking } from "react-icons/tb";
+import { cartdataload } from "../../CustomHooklayout/CustomHook";
 
 const DashboardPage = () => {
     const [isAdmin, setAdmin] = useState(false);
+    const [cart] = cartdataload();
 
 
 
@@ -38,30 +40,29 @@ const DashboardPage = () => {
             </div>
                 { 
                 isAdmin ? 
-                <div className="font-bold uppercase font-Cinzel text-xs py-5 border-b w-full bg-transparent">
-                    <li className="bg-transparent"><NavLink to="" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome/>Admin Home</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BiRestaurant/> Add Items</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TfiMenuAlt/> Magage items</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaBookMedical/> Manage Bookings</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaUsers/> All users</NavLink></li>
+                <div className="font-bold uppercase font-Raleway text-xs py-5 border-b w-full bg-transparent">
+                    <li className="bg-transparent"><NavLink to="" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome className="text-xl"/>Admin Home</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BiRestaurant className="text-xl"/> Add Items</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TfiMenuAlt className="text-xl"/> Magage items</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaBookMedical className="text-xl"/> Manage Bookings</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaUsers className="text-xl"/> All users</NavLink></li>
                 </div>
                 :
-                <div className="font-bold uppercase font-Cinzel text-xs py-5 border-b w-full bg-transparent">
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome/>User Home</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaCalendarAlt/>Reservation</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaCcApplePay/> Payment History</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="mycart" className={({isActive})=> isActive && "text-white bg-transparent"}><BsCartCheckFill/>My Cart</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><MdRateReview/> Add review</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TbBrandBooking/> My Booking</NavLink></li>
+                <div className="font-bold uppercase font-Raleway text-xs py-5 border-b w-full bg-transparent">
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome className="text-xl"/>User Home</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaCalendarAlt className="text-xl"/>Reservation</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaCcApplePay className="text-xl"/> Payment History</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="mycart" className={({isActive})=> isActive && "text-white bg-transparent"}><BsCartCheckFill className="text-xl"/><span>My Cart</span> <span className="font-normal font-Inter px-2 text-black py-1 rounded-lg">{cart.length}</span></NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><MdRateReview className="text-xl"/> Add review</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TbBrandBooking className="text-xl"/> My Booking</NavLink></li>
                 </div>
-
                 }
 
-                <div className="font-bold uppercase font-Cinzel text-xs pt-5 bg-transparent">
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome/> Home</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FiMenu/> Menu</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BsFillHandbagFill/> Shop</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><MdEmail/> Contact</NavLink></li>
+                <div className="font-bold uppercase font-Raleway text-xs pt-5 bg-transparent">
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome className="text-xl"/> Home</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FiMenu className="text-xl"/> Menu</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BsFillHandbagFill className="text-xl"/> Shop</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><MdEmail className="text-xl"/> Contact</NavLink></li>
                 </div>
             </div>
         </ul>
