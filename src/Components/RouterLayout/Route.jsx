@@ -6,6 +6,7 @@ import OurShop from "../PageLayout/OurShopPage/OurShop";
 import Contactus from "../PageLayout/ContactPage/Contactus";
 import LoginPage from "../PageLayout/LoginPage/LoginPage";
 import Registration from "../PageLayout/RegistrationPage/Registration";
+import DashboardPage from "../PageLayout/DashboardPage/DashboardPage";
 
 const route = createBrowserRouter([
     {
@@ -37,6 +38,16 @@ const route = createBrowserRouter([
     {
         path:"/registration",
         element: <Registration/>
+    },
+    {
+        path: "/dashboard",
+        element: <DashboardPage/>,
+        children:[
+            {
+                path: "",
+                element: <h1>This home</h1>
+            }
+        ]
     }
 ]);
 
