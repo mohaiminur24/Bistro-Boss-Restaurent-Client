@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../AuthContextLayout/AuthContextLayout";
 import { Toaster, toast } from "react-hot-toast";
 import { cartdataload } from "../CustomHooklayout/CustomHook";

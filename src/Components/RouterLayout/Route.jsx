@@ -7,6 +7,7 @@ import Contactus from "../PageLayout/ContactPage/Contactus";
 import LoginPage from "../PageLayout/LoginPage/LoginPage";
 import Registration from "../PageLayout/RegistrationPage/Registration";
 import DashboardPage from "../PageLayout/DashboardPage/DashboardPage";
+import MyCart from "../PageLayout/DashboardPage/Components/MyCart";
 
 const route = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ const route = createBrowserRouter([
             {
                 path: "",
                 element: <h1>This home</h1>
+            },
+            {
+                path: "mycart",
+                element: <MyCart/>
             }
         ]
     }

@@ -18,10 +18,10 @@ const DashboardPage = () => {
   return (
     <div className="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content flex flex-col p-10">
       <label
           htmlFor="my-drawer-2"
-          className="px-3 py-2 text-white bg-yellow-700 rounded-md text-sm absolute top-5 left-5"
+          className="px-3 py-2 text-black rounded-md text-sm absolute top-2 left-2"
         >
           <ImMenu/>
         </label>
@@ -50,7 +50,7 @@ const DashboardPage = () => {
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome/>User Home</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaCalendarAlt/>Reservation</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaCcApplePay/> Payment History</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BsCartCheckFill/>My Cart</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="mycart" className={({isActive})=> isActive && "text-white bg-transparent"}><BsCartCheckFill/>My Cart</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><MdRateReview/> Add review</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TbBrandBooking/> My Booking</NavLink></li>
                 </div>
