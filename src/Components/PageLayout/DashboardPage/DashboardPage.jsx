@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { FiMenu } from "react-icons/Fi";
@@ -10,10 +10,21 @@ import { FaBookMedical, FaCalendarAlt, FaCcApplePay, FaUsers } from "react-icons
 import { ImMenu } from "react-icons/im";
 import { TbBrandBooking } from "react-icons/tb";
 import { cartdataload } from "../../CustomHooklayout/CustomHook";
+import { AuthContext } from "../../AuthContextLayout/AuthContextLayout";
 
 const DashboardPage = () => {
-    const [isAdmin, setAdmin] = useState(true);
+    const {user} = useContext(AuthContext);
+    const [isAdmin, setAdmin] = useState(false);
     const [cart] = cartdataload();
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/singleuser?email=${user.email}`).then(res=> res.json())
+        .then(data=> {
+          if(data.role == "admin"){
+            setAdmin(true);
+          }
+        })
+    },[user]);
 
 
 
@@ -41,11 +52,11 @@ const DashboardPage = () => {
                 { 
                 isAdmin ? 
                 <div className="font-bold uppercase font-Raleway text-xs py-5 border-b w-full bg-transparent">
-                    <li className="bg-transparent"><NavLink to="" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome className="text-xl"/>Admin Home</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="adminhome" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome className="text-xl"/>Admin Home</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BiRestaurant className="text-xl"/> Add Items</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TfiMenuAlt className="text-xl"/> Magage items</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaBookMedical className="text-xl"/> Manage Bookings</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaUsers className="text-xl"/> All users</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="alluser" className={({isActive})=> isActive && "text-white bg-transparent"}><FaUsers className="text-xl"/> All users</NavLink></li>
                 </div>
                 :
                 <div className="font-bold uppercase font-Raleway text-xs py-5 border-b w-full bg-transparent">

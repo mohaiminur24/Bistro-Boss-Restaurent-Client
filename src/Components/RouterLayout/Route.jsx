@@ -9,6 +9,7 @@ import Registration from "../PageLayout/RegistrationPage/Registration";
 import DashboardPage from "../PageLayout/DashboardPage/DashboardPage";
 import MyCart from "../PageLayout/DashboardPage/Components/MyCart";
 import PrivateRoute from "../AuthContextLayout/PrivateRoute";
+import Alluser from "../PageLayout/DashboardPage/AllUser/Alluser";
 
 const route = createBrowserRouter([
     {
@@ -46,12 +47,16 @@ const route = createBrowserRouter([
         element: <PrivateRoute><DashboardPage/></PrivateRoute>,
         children:[
             {
-                path: "",
+                path: "adminhome",
                 element: <h1>This home</h1>
             },
             {
                 path: "mycart",
                 element: <PrivateRoute><MyCart/></PrivateRoute>
+            },
+            {
+                path: "alluser",
+                element: <Alluser/>
             }
         ]
     }

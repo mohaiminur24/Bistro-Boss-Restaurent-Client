@@ -1,9 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react';
 import app from '../FirebaseConfigPage/FirebaseConfig';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
+const googleprovider = new GoogleAuthProvider();
 
 const AuthContextLayout = ({children}) => {
     const [user, setUser] = useState(null);
@@ -26,6 +27,12 @@ const AuthContextLayout = ({children}) => {
         return signInWithEmailAndPassword(auth, email, pass);
     };
 
+    // google loin function is here
+    const loginwithgoogle = ()=>{
+        setLoading(true)
+        return signInWithPopup(auth, googleprovider);
+    }
+
 
 
     const AuthValue ={
@@ -33,7 +40,8 @@ const AuthContextLayout = ({children}) => {
         loading,
         handlecreateuser,
         loggedoutuser,
-        handleloginuser
+        handleloginuser,
+        loginwithgoogle
     };
 
     useEffect(()=>{

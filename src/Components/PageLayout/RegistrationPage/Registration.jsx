@@ -10,6 +10,7 @@ const Registration = () => {
   const { register, handleSubmit, reset } = useForm();
   const {handlecreateuser} = useContext(AuthContext);
   const navigate = useNavigate();
+  const {loading} = useContext(AuthContext);
   
   const createuser = (data) =>{
     handlecreateuser(data.email, data.password)
@@ -18,8 +19,8 @@ const Registration = () => {
         displayName: data.name,
         photoURL: data.photourl
       }).then(res=>{
-        const user = {name: data.name, email: data.email}
-        fetch("http://localhost:5000/createnewuser",{
+        const user = {name: data.name, email: data.email, role:"user"}
+        fetch(`http://localhost:5000/createnewuser?email=${data.email}`,{
           method: "POST",
           headers: {
             "content-type":"application/json"
@@ -102,9 +103,10 @@ const Registration = () => {
               />
             </div>
             <input
-              className="text-xs my-2 w-full mt-5 border block px-4 py-3 outline-none rounded-md bg-yellow-700 text-white"
+              className="text-xs my-2 w-full mt-5 border block px-4 py-3 outline-none rounded-md bg-yellow-700 disabled:opacity-10 text-white"
+              disabled={loading && true}
               type="submit"
-              value="sign in"
+              value="sign up"
             />
           </form>
           <div className="text-xs font-Inter text-yellow-700 mt-5 text-center">
