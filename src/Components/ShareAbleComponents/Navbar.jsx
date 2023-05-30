@@ -55,7 +55,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/mycart"
           className={({ isActive }) => isActive && "text-yellow-500"}
         >
           <button className=" flex justify-center items-center px-3 py-2 rounded-md gap-2 bg-yellow-900 text-white">

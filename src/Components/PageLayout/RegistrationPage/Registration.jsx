@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, json, useNavigate } from "react-router-dom";
 import LoginWithSocial from "../../ShareAbleComponents/LoginWithSocial";
 import { AuthContext } from "../../AuthContextLayout/AuthContextLayout";
 import { useForm } from "react-hook-form";
@@ -17,16 +17,28 @@ const Registration = () => {
       updateProfile(res.user,{
         displayName: data.name,
         photoURL: data.photourl
-      });
-      Swal.fire({
-        position: 'top',
-        icon: 'success',
-        title: 'New user create successfully!',
-        showConfirmButton: false,
-        timer: 1500
+      }).then(res=>{
+        const user = {name: data.name, email: data.email}
+        fetch("http://localhost:5000/createnewuser",{
+          method: "POST",
+          headers: {
+            "content-type":"application/json"
+          },
+          body: JSON.stringify(user)
+        }).then(res=>{
+          Swal.fire({
+            position: 'top',
+            icon: 'success',
+            title: 'New user create successfully!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          reset();
+          navigate('/');
+        }).catch(error=>{
+  
+        });
       })
-      reset();
-      navigate('/');
     
     }).catch(error=>{
       Swal.fire({

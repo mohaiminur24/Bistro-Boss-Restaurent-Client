@@ -12,7 +12,7 @@ import { TbBrandBooking } from "react-icons/tb";
 import { cartdataload } from "../../CustomHooklayout/CustomHook";
 
 const DashboardPage = () => {
-    const [isAdmin, setAdmin] = useState(false);
+    const [isAdmin, setAdmin] = useState(true);
     const [cart] = cartdataload();
 
 
