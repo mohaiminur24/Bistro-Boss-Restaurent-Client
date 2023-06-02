@@ -52,7 +52,7 @@ const DashboardPage = () => {
                 isAdmin ? 
                 <div className="font-bold uppercase font-Raleway text-xs py-5 border-b w-full bg-transparent">
                     <li className="bg-transparent"><NavLink to="adminhome" className={({isActive})=> isActive && "text-white bg-transparent"}><AiFillHome className="text-xl"/>Admin Home</NavLink></li>
-                    <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><BiRestaurant className="text-xl"/> Add Items</NavLink></li>
+                    <li className="bg-transparent"><NavLink to="additem" className={({isActive})=> isActive && "text-white bg-transparent"}><BiRestaurant className="text-xl"/> Add Items</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><TfiMenuAlt className="text-xl"/> Magage items</NavLink></li>
                     <li className="bg-transparent"><NavLink to="/" className={({isActive})=> isActive && "text-white bg-transparent"}><FaBookMedical className="text-xl"/> Manage Bookings</NavLink></li>
                     <li className="bg-transparent"><NavLink to="alluser" className={({isActive})=> isActive && "text-white bg-transparent"}><FaUsers className="text-xl"/> All users</NavLink></li>

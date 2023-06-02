@@ -10,6 +10,7 @@ import DashboardPage from "../PageLayout/DashboardPage/DashboardPage";
 import MyCart from "../PageLayout/DashboardPage/Components/MyCart";
 import PrivateRoute from "../AuthContextLayout/PrivateRoute";
 import Alluser from "../PageLayout/DashboardPage/AllUser/Alluser";
+import AddItem from "../PageLayout/DashboardPage/Components/AddItem";
 
 const route = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const route = createBrowserRouter([
             {
                 path: "alluser",
                 element: <Alluser/>
+            },
+            {
+                path: "additem",
+                element: <AddItem/>
             }
         ]
     }
