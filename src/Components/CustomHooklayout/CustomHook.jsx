@@ -10,7 +10,6 @@ const FindMenuByCatagory = (catagory)=>{
                 setMenu(filter);
             });
         },[])
-        console.log(menu);
         return [menu];
 };
 
@@ -18,10 +17,15 @@ const FindMenuByCatagory = (catagory)=>{
 // load cart data funtion is here
 const cartdataload = () =>{
     const {user} = useContext(AuthContext);
+    const accessToken = localStorage.getItem('access-token')
         const { refetch ,data : cart =[] } = useQuery({
             queryKey: ['cart', user?.email],
             queryFn: async() =>{
-                const res = await fetch(`http://localhost:5000/cartdata?email=${user.email}`)
+                const res = await fetch(`http://localhost:5000/cartdata?email=${user.email}`,{
+                    headers:{
+                        authToken: `Bearer ${accessToken}`
+                    }
+                })
                 return res.json();
             }   
           });

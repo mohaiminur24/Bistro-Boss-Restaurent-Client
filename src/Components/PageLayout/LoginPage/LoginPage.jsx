@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const LoginPage = () => {
-    const [disablelogin, setDisableLogin] = useState(true);
+    const [disablelogin, setDisableLogin] = useState(false);
     const [captcha, setCaptcha] = useState(null);
     const {handleloginuser} = useContext(AuthContext);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -31,7 +31,6 @@ const LoginPage = () => {
     },[captcha])
 
     const Loginuser = event =>{
-      console.log(event);
       handleloginuser(event.email, event.password)
       .then(res=>{
         Swal.fire({

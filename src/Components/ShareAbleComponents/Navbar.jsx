@@ -9,7 +9,6 @@ const Navbar = () => {
   const { user } = useContext(AuthContext);
   const { loggedoutuser } = useContext(AuthContext);
   const [cart] = cartdataload();
-  console.log(cart);
 
   const menubar = (
     <>
