@@ -45,6 +45,20 @@ const AddItem = () => {
               />
             </div>
           </div>
+          <div className="w-full mt-5">
+            <label className="text-sm block" htmlFor="recepie">
+              Recpie Details
+            </label>
+            <textarea
+              className="w-full mt-2 px-3 py-2 text-sm rounded-md outline-none text-gray-500"
+              placeholder="Recpie Details"
+              name="details"
+              id="details"
+              cols="30"
+              rows="5"
+            ></textarea>
+          </div>
+          <input className="px-5 mt-5 rounded-md font-Inter font-bold text-white p-2 bg-gradient-to-r from-yellow-800 to-yellow-700" type="submit" value="Add Items" />
         </form>
       </div>
     </div>
