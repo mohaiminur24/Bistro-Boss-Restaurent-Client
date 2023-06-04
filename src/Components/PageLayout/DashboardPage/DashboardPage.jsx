@@ -11,19 +11,22 @@ import { ImMenu } from "react-icons/im";
 import { TbBrandBooking } from "react-icons/tb";
 import { cartdataload } from "../../CustomHooklayout/CustomHook";
 import { AuthContext } from "../../AuthContextLayout/AuthContextLayout";
+import useAxiosSecure from "../../CustomHooklayout/useAxiosSecure";
 
 const DashboardPage = () => {
     const {user} = useContext(AuthContext);
     const [isAdmin, setAdmin] = useState(false);
     const [cart] = cartdataload();
+    const axiosSecure = useAxiosSecure();
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/singleuser?email=${user.email}`).then(res=> res.json())
-        .then(data=> {
-          if(data.role == "admin"){
-            setAdmin(true);
-          }
-        })
+      axiosSecure.get(`/singleuser?email=${user.email}`).then(res=> {
+        console.log(res.data);
+        if(res.data.role == "admin"){
+          setAdmin(true);
+        }
+      })
+        
     },[user]);
 
 

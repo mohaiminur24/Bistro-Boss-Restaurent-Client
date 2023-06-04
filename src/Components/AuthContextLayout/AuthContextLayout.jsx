@@ -11,6 +11,8 @@ const AuthContextLayout = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    //checkuser Admin or not function is here;
+
     // create new user function is here
     const handlecreateuser = (email, pass)=>{
         setLoading(true);
@@ -40,7 +42,7 @@ const AuthContextLayout = ({children}) => {
         handlecreateuser,
         loggedoutuser,
         handleloginuser,
-        loginwithgoogle
+        loginwithgoogle,
     };
 
     useEffect(()=>{

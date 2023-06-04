@@ -19,6 +19,7 @@ const Registration = () => {
         displayName: data.name,
         photoURL: data.photourl
       }).then(res=>{
+        console.log('update data from client side', res)
         const user = {name: data.name, email: data.email, role:"user"}
         fetch(`http://localhost:5000/createnewuser?email=${data.email}`,{
           method: "POST",
