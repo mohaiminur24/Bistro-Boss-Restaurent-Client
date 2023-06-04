@@ -3,11 +3,13 @@ import SectionTitle from "../../../ShareAbleComponents/SectionTitle";
 import { cartdataload } from "../../../CustomHooklayout/CustomHook";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../CustomHooklayout/useAxiosSecure";
 
 const MyCart = () => {
     const [cart, refetch] = cartdataload();
     console.log(cart);
     const totalprice = cart.reduce((prev,current)=>prev+ current.price , 0);
+    const axiosSecure = useAxiosSecure();
 
     const deleteitems = (id)=>{
         Swal.fire({
@@ -20,18 +22,15 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/deletecartitems?id=${id}`,{
-                    method: "DELETE",
-                }).then(res=>{
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      );
-                    refetch();
-                }).catch(error=>{
-
-                })
+              axiosSecure.delete(`/deletecartitems?id=${id}`)
+              .then(res=>{
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                );
+                refetch();
+              })
               
             }
           })
