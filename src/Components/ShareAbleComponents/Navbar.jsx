@@ -6,8 +6,13 @@ import { Toaster, toast } from "react-hot-toast";
 import { cartdataload } from "../CustomHooklayout/CustomHook";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user , loading} = useContext(AuthContext);
   const { loggedoutuser } = useContext(AuthContext);
+
+  if(loading){
+    return <progress className="progress w-56"></progress>;
+  }
+
   const [cart] = cartdataload();
 
   const menubar = (

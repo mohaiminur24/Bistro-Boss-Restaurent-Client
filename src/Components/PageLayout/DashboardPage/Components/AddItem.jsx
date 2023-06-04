@@ -2,6 +2,7 @@ import React from "react";
 import SectionTitle from "../../../ShareAbleComponents/SectionTitle";
 
 const AddItem = () => {
+
   return (
     <div>
       <SectionTitle heading="add an item" subheading="what's New" />
