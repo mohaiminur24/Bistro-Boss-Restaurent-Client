@@ -59,6 +59,9 @@ const AddItem = () => {
               rows="5"
             ></textarea>
           </div>
+          
+          <input type="file" placeholder="Your items picture" className="file-input file-input-bordered w-full max-w-xs block mt-4" />
+
           <input className="px-5 mt-5 rounded-md font-Inter font-bold text-white p-2 bg-gradient-to-r from-yellow-800 to-yellow-700" type="submit" value="Add Items" />
         </form>
       </div>

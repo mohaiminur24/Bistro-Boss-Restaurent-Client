@@ -9,25 +9,11 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { FaBookMedical, FaCalendarAlt, FaCcApplePay, FaUsers } from "react-icons/fa";
 import { ImMenu } from "react-icons/im";
 import { TbBrandBooking } from "react-icons/tb";
-import { cartdataload } from "../../CustomHooklayout/CustomHook";
-import { AuthContext } from "../../AuthContextLayout/AuthContextLayout";
-import useAxiosSecure from "../../CustomHooklayout/useAxiosSecure";
+import { cartdataload, useAdmin } from "../../CustomHooklayout/CustomHook";
 
 const DashboardPage = () => {
-    const {user} = useContext(AuthContext);
-    const [isAdmin, setAdmin] = useState(false);
     const [cart] = cartdataload();
-    const axiosSecure = useAxiosSecure();
-
-    useEffect(()=>{
-      axiosSecure.get(`/singleuser?email=${user.email}`).then(res=> {
-        console.log(res.data);
-        if(res.data.role == "admin"){
-          setAdmin(true);
-        }
-      })
-        
-    },[user]);
+    const isAdmin = useAdmin();
 
 
   return (

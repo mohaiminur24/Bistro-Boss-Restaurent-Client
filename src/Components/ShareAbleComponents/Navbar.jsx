@@ -3,16 +3,12 @@ import { NavLink } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { AuthContext } from "../AuthContextLayout/AuthContextLayout";
 import { Toaster, toast } from "react-hot-toast";
-import { cartdataload } from "../CustomHooklayout/CustomHook";
+import { cartdataload, useAdmin } from "../CustomHooklayout/CustomHook";
 
 const Navbar = () => {
-  const { user , loading} = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
   const { loggedoutuser } = useContext(AuthContext);
-
-  if(loading){
-    return <progress className="progress w-56"></progress>;
-  }
-
+  const isAdmin = useAdmin();
   const [cart] = cartdataload();
 
   const menubar = (
@@ -35,7 +31,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to={isAdmin ? "/dashboard/adminhome" : "/dashboard/userhome"}
           className={({ isActive }) => isActive && "text-yellow-500"}
         >
           <button>Dashboard</button>

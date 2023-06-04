@@ -4,26 +4,22 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 import { cartdataload } from '../CustomHooklayout/CustomHook';
+import useAxiosSecure from '../CustomHooklayout/useAxiosSecure';
 
 const ShopMenudetails = ({data}) => {
   const {user} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [,refetch] = cartdataload();
+  const axiosSecure = useAxiosSecure();
 
   const additems= (item)=>{
     if(user){
       const userEmail = user.email;
       const cartItem = {name:item.name,image:item.image,price:item.price,category: item.category,recipe:item.recipe,userEmail};
-      fetch("http://localhost:5000/usercart",{
-        method: "POST",
-        headers:{
-          "content-type":"application/json"
-        },
-        body: JSON.stringify(cartItem)
-      }).then(res=>{
+      axiosSecure.post("/usercart",cartItem).then(res=>{
         toast.success('Successfully Added in your Cart!');
-        refetch(); //refect cart data
+        refetch();
       }).catch(error=>{
         toast.error(error.message);
       })

@@ -11,6 +11,7 @@ import MyCart from "../PageLayout/DashboardPage/Components/MyCart";
 import PrivateRoute from "../AuthContextLayout/PrivateRoute";
 import Alluser from "../PageLayout/DashboardPage/AllUser/Alluser";
 import AddItem from "../PageLayout/DashboardPage/Components/AddItem";
+import AdminRouter from "../AuthContextLayout/AdminRouter";
 
 const route = createBrowserRouter([
     {
@@ -48,16 +49,24 @@ const route = createBrowserRouter([
         element: <PrivateRoute><DashboardPage/></PrivateRoute>,
         children:[
             {
+                path: "userhome",
+                element: <h1>this is user Home</h1>
+            },
+            {
+                path: "adminhome",
+                element: <AdminRouter><h1>this is admin Home</h1></AdminRouter>
+            },
+            {
                 path: "mycart",
                 element: <PrivateRoute><MyCart/></PrivateRoute>
             },
             {
                 path: "alluser",
-                element: <Alluser/>
+                element: <AdminRouter><Alluser/></AdminRouter>
             },
             {
                 path: "additem",
-                element: <AddItem/>
+                element: <AdminRouter><AddItem/></AdminRouter>
             }
         ]
     }

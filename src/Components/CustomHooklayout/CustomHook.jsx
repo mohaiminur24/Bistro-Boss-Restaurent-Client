@@ -17,16 +17,38 @@ const FindMenuByCatagory = (catagory)=>{
 // load cart data funtion is here
 const cartdataload = () =>{
     const axiosSecure = useAxiosSecure();
-    const {user} = useContext(AuthContext)
-        const { refetch ,data : cart =[] } = useQuery({
-            queryKey: ['cart', user?.email],
-            queryFn: async() =>{
-                const res = await axiosSecure.get(`/cartdata?email=${user.email}`)
-                return res.data;
-            }   
-          });
-    
-      return [cart, refetch];
+    const {user} = useContext(AuthContext);
+    const { refetch , data : cart =[] } = useQuery({
+        queryKey: ['cart', user?.email],
+        queryFn: async() =>{
+            const res = await axiosSecure.get(`/cartdata?email=${user.email}`)
+            return res.data;
+        }   
+        });
+    return [cart, refetch];
+};
+
+
+//user admin or not function is here
+const useAdmin = ()=>{
+    const {user} = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
+    const [isAdmin, setAdmin] = useState(false);
+    const [adminloading, setAdminLoading] = useState(true);
+    useEffect(()=>{
+        if(!user?.email){
+            return;
+        };
+        axiosSecure.get(`/singleuser?email=${user.email}`)
+        .then(res=> {
+            if(res.data.role === "admin"){
+                setAdmin(true);
+                setAdminLoading(false)
+            };
+        });
+    },[user?.email])
+
+    return [isAdmin,adminloading];
 };
 
 
@@ -38,6 +60,5 @@ const cartdataload = () =>{
 
 
 
-
 export default FindMenuByCatagory;
-export {cartdataload};
+export {cartdataload,useAdmin};
