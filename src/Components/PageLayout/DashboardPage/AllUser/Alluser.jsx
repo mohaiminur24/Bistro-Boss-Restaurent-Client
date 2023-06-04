@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import SectionTitle from "../../../ShareAbleComponents/SectionTitle";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../CustomHooklayout/useAxiosSecure";
 
 const Alluser = () => {
   const [users, setusers] = useState(null);
   const [loaduser, setLoaduser] = useState(false);
+  const axiosSecure = useAxiosSecure();
+
   useEffect(() => {
-    fetch("http://localhost:5000/getallusers")
-      .then((res) => res.json())
-      .then((data) => setusers(data));
+    axiosSecure.get("/getallusers")
+      .then((res) => setusers(res.data));
   }, [loaduser]);
 
   const handleuseruserrole = (role, email) => {
@@ -23,11 +25,9 @@ const Alluser = () => {
       confirmButtonText: `${role}`,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/updateuserrole?email=${email}&role=${role}`,{
-          method: "POST",
-        }).then(res=> res.json())
-        .then(data=>{
-          if(data.modifiedCount){
+        axiosSecure.post(`/updateuserrole?email=${email}&role=${role}`)
+        .then(res=>{
+          if(res.data.modifiedCount){
             Swal.fire("success!", `this user make ${role}`, "success");
             setLoaduser(!loaduser);
           };
@@ -50,9 +50,9 @@ const Alluser = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deletesingleuser?id=${id}`,{method:"DELETE"}).then(res=>res.json())
-        .then(data=>{
-          if(data.deletedCount){
+        axiosSecure.delete(`http://localhost:5000/deletesingleuser?id=${id}`)
+        .then(res=>{
+          if(res.data.deletedCount){
             Swal.fire(
               'Deleted!',
               'Your file has been deleted.',
