@@ -67,6 +67,10 @@ const route = createBrowserRouter([
             {
                 path: "additem",
                 element: <AdminRouter><AddItem/></AdminRouter>
+            },
+            {
+                path: "payment",
+                element: <h1>this is payment layout</h1>
             }
         ]
     }

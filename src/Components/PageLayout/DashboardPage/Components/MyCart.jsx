@@ -4,6 +4,7 @@ import { cartdataload } from "../../../CustomHooklayout/CustomHook";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../CustomHooklayout/useAxiosSecure";
+import { NavLink } from "react-router-dom";
 
 const MyCart = () => {
     const [cart, refetch] = cartdataload();
@@ -41,11 +42,9 @@ const MyCart = () => {
         <div className="flex justify-between text-lg items-center font-Cinzel font-bold">
           <h1>Total Order: {cart.length}</h1>
           <h1>Total Price: ${totalprice}</h1>
-          <h1>
-            <button className="px-4 py-2 bg-yellow-600 rounded-md text-sm text-white">
+          <NavLink to="/dashboard/payment"><button className="px-4 py-2 bg-yellow-600 rounded-md text-sm text-white">
               Pay
-            </button>
-          </h1>
+            </button></NavLink>
         </div>
         <div className="mt-5">
           <div className="overflow-x-auto">
