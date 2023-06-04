@@ -11,8 +11,6 @@ const Navbar = () => {
   const [isAdmin] = useAdmin();
   const [cart] = cartdataload();
 
-  console.log(isAdmin);
-
   const menubar = (
     <>
       <li>
