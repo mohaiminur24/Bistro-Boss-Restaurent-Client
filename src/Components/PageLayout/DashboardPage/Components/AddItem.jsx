@@ -1,13 +1,19 @@
 import React from "react";
 import SectionTitle from "../../../ShareAbleComponents/SectionTitle";
+import { useForm } from "react-hook-form";
 
 const AddItem = () => {
+  const { register, handleSubmit } = useForm();
+
+  const additemsfunction = (data) => {
+    console.log(data);
+  };
 
   return (
     <div>
       <SectionTitle heading="add an item" subheading="what's New" />
       <div className="w-4/5 mx-auto p-10 rounded-md bg-gray-100">
-        <form>
+        <form onSubmit={handleSubmit(additemsfunction)}>
           <div className="w-full">
             <label className="text-sm block" htmlFor="recepie">
               Recpie Name
@@ -15,6 +21,7 @@ const AddItem = () => {
             <input
               className="w-full mt-2 px-3 py-2 text-sm rounded-md outline-none text-gray-500"
               type="text"
+              {...register("recpieName")}
               name="recpieName"
               placeholder="Recpie Name"
               id="recipename"
@@ -25,22 +32,28 @@ const AddItem = () => {
               <label className="text-sm block" htmlFor="recepie">
                 Catagory
               </label>
-              <input
+              <select
+                {...register("catagory")}
                 className="w-full mt-2 px-3 py-2 text-sm rounded-md outline-none text-gray-500"
-                type="text"
                 name="catagory"
-                placeholder="catagory"
-                id="recipename"
-              />
+                id=""
+              >
+                <option value="popular">popular</option>
+                <option value="pizza">pizza</option>
+                <option value="soup">soup</option>
+                <option value="salad">salad</option>
+                <option value="offered">offered</option>
+              </select>
             </div>
             <div className="w-full">
               <label className="text-sm block" htmlFor="recepie">
                 Price
               </label>
               <input
+                {...register("price")}
                 className="w-full mt-2 px-3 py-2 text-sm rounded-md outline-none text-gray-500"
                 type="text"
-                name="recpieName"
+                name="price"
                 placeholder="price"
                 id="recipename"
               />
@@ -51,6 +64,7 @@ const AddItem = () => {
               Recpie Details
             </label>
             <textarea
+              {...register("details")}
               className="w-full mt-2 px-3 py-2 text-sm rounded-md outline-none text-gray-500"
               placeholder="Recpie Details"
               name="details"
@@ -59,10 +73,20 @@ const AddItem = () => {
               rows="5"
             ></textarea>
           </div>
-          
-          <input type="file" placeholder="Your items picture" className="file-input file-input-bordered w-full max-w-xs block mt-4" />
 
-          <input className="px-5 mt-5 rounded-md font-Inter font-bold text-white p-2 bg-gradient-to-r from-yellow-800 to-yellow-700" type="submit" value="Add Items" />
+          <input
+            {...register("picture")}
+            type="file"
+            name="picture"
+            placeholder="Your items picture"
+            className="file-input file-input-bordered w-full max-w-xs block mt-4"
+          />
+
+          <input
+            className="px-5 mt-5 rounded-md font-Inter font-bold text-white p-2 bg-gradient-to-r from-yellow-800 to-yellow-700"
+            type="submit"
+            value="Add Items"
+          />
         </form>
       </div>
     </div>

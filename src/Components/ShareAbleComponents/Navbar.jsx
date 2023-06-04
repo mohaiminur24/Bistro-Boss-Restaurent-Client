@@ -8,8 +8,10 @@ import { cartdataload, useAdmin } from "../CustomHooklayout/CustomHook";
 const Navbar = () => {
   const { user} = useContext(AuthContext);
   const { loggedoutuser } = useContext(AuthContext);
-  const isAdmin = useAdmin();
+  const [isAdmin] = useAdmin();
   const [cart] = cartdataload();
+
+  console.log(isAdmin);
 
   const menubar = (
     <>

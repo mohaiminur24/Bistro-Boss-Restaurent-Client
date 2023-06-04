@@ -5,13 +5,13 @@ import { useContext } from 'react';
 import { AuthContext } from './AuthContextLayout';
 
 const AdminRouter = ({children}) => {
-    const isAdmin = useAdmin();
+    const [isAdmin] = useAdmin();
     const navigate = useNavigate();
     const {loading} = useContext(AuthContext);
 
     if(loading){
         return <div>loading....</div>
-    }
+    };
     
     if(isAdmin){
         return children;

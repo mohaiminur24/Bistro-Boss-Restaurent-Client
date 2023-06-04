@@ -13,7 +13,7 @@ import { cartdataload, useAdmin } from "../../CustomHooklayout/CustomHook";
 
 const DashboardPage = () => {
     const [cart] = cartdataload();
-    const isAdmin = useAdmin();
+    const [isAdmin] = useAdmin();
 
 
   return (
