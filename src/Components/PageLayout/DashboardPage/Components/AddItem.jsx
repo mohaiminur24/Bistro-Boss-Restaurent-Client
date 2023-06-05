@@ -9,7 +9,7 @@ const AddItem = () => {
   const axiosSecure = useAxiosSecure();
   const { register, formState: { errors }, handleSubmit, reset } = useForm();
   const [isloading, setLoading] =useState(false)
-  const imgHostingUrl = `https://api.imgbb.com/1/upload?expiration=600&key=${
+  const imgHostingUrl = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_ImgBB_api
   }`;
 

@@ -12,6 +12,7 @@ import PrivateRoute from "../AuthContextLayout/PrivateRoute";
 import Alluser from "../PageLayout/DashboardPage/AllUser/Alluser";
 import AddItem from "../PageLayout/DashboardPage/Components/AddItem";
 import AdminRouter from "../AuthContextLayout/AdminRouter";
+import PaymentLayout from "../PageLayout/DashboardPage/AllUser/PaymentLayout";
 
 const route = createBrowserRouter([
     {
@@ -49,10 +50,6 @@ const route = createBrowserRouter([
         element: <PrivateRoute><DashboardPage/></PrivateRoute>,
         children:[
             {
-                path: "userhome",
-                element: <h1>this is user Home</h1>
-            },
-            {
                 path: "adminhome",
                 element: <AdminRouter><h1>this is admin Home</h1></AdminRouter>
             },
@@ -68,9 +65,14 @@ const route = createBrowserRouter([
                 path: "additem",
                 element: <AdminRouter><AddItem/></AdminRouter>
             },
+            // normal user route is here
+            {
+                path: "userhome",
+                element: <h1>this is user Home</h1>
+            },
             {
                 path: "payment",
-                element: <h1>this is payment layout</h1>
+                element: <PaymentLayout/>
             }
         ]
     }
